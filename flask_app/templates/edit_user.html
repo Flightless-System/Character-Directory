@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LIST OF FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
+
+    <!-- FONT LIST ENDS, CSS LINKED HERE -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form_pages.css') }}">
+    <title>{{show_user.username}} - Edit</title>
+</head>
+
+<body>
+    <div class="solo_form">
+        <form action="/update_user/{{show_user.id}}" enctype="multipart/form-data" method="post">
+            <h1>୨⎯ Edit Profile ⎯୧</h1>
+            <h2>Including an @ in front of your Twitter username will break the link!</h2>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="flash"><b><i>{{message}}</i></b></p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="{{show_user.name}}">
+            <br>
+            <label for="pronouns">Pronouns:</label>
+            <input type="text" name="pronouns" value="{{show_user.pronouns}}">
+            <br>
+            <label for="birthday">Birthday:</label>
+            <input type="date" name="birthday" value="{{show_user.birthday}}">
+            <br>
+            <label for="twitter">Twitter:</label>
+            <input type="text" name="twitter" value="{{show_user.twitter}}">
+            <br>
+            <label for="about_me">About Me:</label>
+            <textarea name="about_me" cols="30" rows="10">{{show_user.about_me}}</textarea>
+            <br>
+            <input type="submit" value="Update" class="button">
+        </form>
+    </div>
+</body>
+
+</html>

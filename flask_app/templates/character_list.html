@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- LIST OF FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
+
+    <!-- FONT LIST ENDS, CSS LINKED HERE -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lists.css') }}">
+    <title>{{user_charas.username}} - Characters</title>
+</head>
+<body>
+    <h1>✎{{user_charas.username}}'s Characters</h1>
+    <p><a href="/profile/{{session['user_id']}}" class="content">Your Profile</a>
+    {% if user_charas.id == session.user_id %}
+    | <a href="/add_character" class="content">Add Character</a>
+    {% endif %}
+    | <a href="/users" class="content">Browse Users</a> | <a href="/logout" class="content">Logout</a>
+    </p>
+    {% for one_character in user_charas.characters %}
+        {% if one_character.name != None %}
+            <h2>» <a href="/character/{{one_character.id}}">{{one_character.name}}</a></h2>
+        {% else %}
+            <h2>Nothing here!</h2>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,64 @@
+body {
+    background-color: snow;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 95pt;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #8daa9d;
+    color: #7b0828;
+}
+
+h2 {
+    font-family: 'Quattrocento', serif;
+    font-size: 24pt;
+    text-transform: uppercase;
+}
+
+li {
+    color: #522B47;
+}
+
+li, p, label, input {
+    font-family: 'Lora', serif;
+    font-size: 15pt;
+}
+
+.flash {
+    font-family: serif;
+    text-align: center;
+    margin: 0px;
+    color: #522B47;
+}
+
+.forms {
+    display: flex;
+    justify-content: space-around;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+.solo_form {
+    margin-left: 3em;
+}
+
+.button {
+    height: 30px;
+    width: 140px;
+    border: 2px solid #8daa9d;
+    background-color: snow;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #7b0828;
+    margin-top: 5px;
+    margin-left: 10px;
+    box-shadow: 1px 1px 5px #8daa9d;
+    cursor: pointer;
+}
+
+.button:active {
+    transform: translateY(4px);
+}

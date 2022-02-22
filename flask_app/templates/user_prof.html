@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- LIST OF FONTS -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
+ 
+     <!-- FONT LIST ENDS, CSS LINKED HERE -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/profiles.css') }}">
+    <title>{{show_user.username}} - Profile</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="flash"><b><i>{{message}}</i></b></p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h1>⇢ ˗ˏˋ {{show_user.username}}'s Profile' ࿐ྂ</h1>
+    <h2>╭──╯ . . . . .<a href="/characters/{{show_user.id}}">Characters</a> | <a href="/favorites/{{show_user.id}}">Favorites</a>
+    {% if show_user.id == session.user_id %}
+    | <a href="/edit/{{show_user.id}}">Edit</a>
+    {% endif %}
+    | <a href="/logout">Logout</a>. . . . . ╰──╮
+    </h2>
+        <p><b>Name:</b> {{show_user.name}}</p>
+        <p><b>Pronouns:</b> {{show_user.pronouns}}</p>
+        <p><b>Birthday:</b> {{show_user.birthday.strftime('%B %d')}}, {{show_user.birthday.strftime('%Y')}}</p>
+        <p><b>Twitter:</b> <a href="http://twitter.com/{{show_user.twitter}}" class="content">{{show_user.twitter}}</a></p>
+        <p><b>About Me:</b></p>
+        <p>{{show_user.about_me}}</p>
+    <h2>╭──╯ . . . . .<a href="/users">Browse Users</a>. . . . . ╰──╮</h2>
+</body>
+</html>

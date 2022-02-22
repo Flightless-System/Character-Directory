@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- LIST OF FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
+
+    <!-- FONT LIST ENDS, CSS LINKED HERE -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profiles.css') }}">
+    <title>{{character.name}}'s Profile - {{character.creator.username}}</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="flash"><b><i>{{message}}</i></b></p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    <div class="top">
+        <h1>⇢ ˗ˏˋ {{character.name}} ࿐ྂ</h1>
+        {% if "user_id" in session %}
+            <form action="/save_favorite/{{character.id}}" method="post">
+                <input type="hidden" name="user_id" value="{{session['user_id']}}">
+                <input type="hidden" name="character_id" value="{{character.id}}">
+                <input type="submit" value="Favorite" class="button">
+            </form>
+        {% endif %}
+    </div>
+    <h2>╭──╯ . . . . .<a href="/profile/{{character.creator.id}}">User Profile</a>
+   {% if character.creator.id == session.user_id %}
+   | <a href="/edit_character/{{character.id}}/{{character.creator.id}}">Edit</a>. . . . . ╰──╮
+   {% endif %}
+    </h2>
+    <p><b>Age:</b> {{character.age}}yo</p>
+    <p><b>Gender:</b> {{character.gender}}</p>
+    <p><b>Pronouns:</b> {{character.pronouns}}</p>
+    <p><b>Species:</b> {{character.species}}</p>
+    <p><b>Alignment:</b> {{character.alignment}}</p>
+    <p><i>{{character.description}}</i></p>
+</body>
+</html>

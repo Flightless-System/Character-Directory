@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- LIST OF FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
+
+    <!-- FONT LIST ENDS, CSS LINKED HERE -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form_pages.css') }}">
+    <title>Add Character</title>
+</head>
+<body>
+    <div class="solo_form">
+        <form action="/save_character" method="post">
+        <h1>୨⎯ Create Character ⎯୧</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                     <p class="flash"><b><i>{{message}}</i></b></p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <input type="hidden" name="user_id" value="{{user.id}}">
+        <label for="name">Name:</label>
+        <input type="text" name="name">
+        <br>
+        <label for="age">Age:</label>
+        <input type="number" name="age" min="1">
+        <br>
+        <label for="gender">Gender:</label>
+        <input type="text" name="gender">
+        <br>
+        <label for="pronouns">Pronouns:</label>
+        <input type="text" name="pronouns">
+        <br>
+        <label for="species">Species:</label>
+        <input type="text" name="species">
+        <br>
+        <label for="alignment">Alignment:</label>
+        <input type="text" name="alignment">
+        <br>
+        <label for="description">Description:</label>
+        <br>
+        <textarea name="description" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" value="Create" class="button">
+        </form>
+    </div>
+</body>
+</html>

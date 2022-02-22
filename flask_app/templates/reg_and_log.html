@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LIST OF FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
+
+    <!-- FONT LIST ENDS, CSS LINKED HERE -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form_pages.css') }}">
+
+    <title>Registration & Login</title>
+</head>
+
+<body>
+    <h1>୨⎯ Character Directory ⎯୧</h1>
+    <!-- RULES -->
+    <h2><span style="text-decoration: underline;">REPORTABLE OFFENSES</span></h2>
+    <h2>╰┈➤<i>More may be added to this list over time to further clarify and include new rules.</i></h2>
+    <ol>
+        <li>Grapic content: nudity, sexual implications, gore/guro.</li>
+        <li>Forms of bigotry or offensive media; this includes but is not limited to the content within user profiles,
+            usernames, character profiles.</li>
+    </ol>
+    <!-- FLASH MESSAGES -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p class="flash"><b><i>{{message}}</i></b></p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <!-- REGISTRATION FORM -->
+    <div class="forms">
+        <form action="/register" method="post">
+            <h2>Registration</h2>
+                <label for="username" class="font">Username:</label>
+                <input type="text" name="username" class="font">
+                <br>
+                <label for="email">Email:</label>
+                <input type="text" name="email">
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+                <br>
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" name="confirm_password">
+                <br>
+                <input type="submit" value="Registration" class="button">
+        </form>
+        <!-- LOGIN FORM -->
+        <form action="/login" method="post">
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" name="username">
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password">
+            <br>
+            <input type="submit" value="Login" class="button">
+            <p><a href="">Forgot username?</a></p>
+            <p><a href="">Forgot password?</a></p>
+        </form>
+    </div>
+</body>
+
+</html>

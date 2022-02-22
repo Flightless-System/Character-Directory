@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- LIST OF FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
+
+    <!-- FONT LIST ENDS, CSS LINKED HERE -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lists.css') }}">
+    <title>{{user_faves.username}} - Favorites</title>
+</head>
+<body>
+    <h1>✎{{user_faves.username}}'s Favorites</h1>
+    <p><a href="/profile/{{session['user_id']}}" class="content">Your Profile</a> | <a href="/users" class="content">Browse Users</a> | <a href="/logout" class="content">Logout</a></p>
+    {% for one_favorite in user_faves.favorites %}
+        {% if one_favorite.name != None %}
+            <h2>» <a href="/character/{{one_favorite.id}}">{{one_favorite.name}}</a></h2>
+        {% else %}
+            <h2>Nothing here!</h2>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
