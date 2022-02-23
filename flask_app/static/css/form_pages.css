@@ -13,7 +13,7 @@ h1 {
 
 h2 {
     font-family: 'Quattrocento', serif;
-    font-size: 24pt;
+    font-size: 20pt;
     text-transform: uppercase;
 }
 
@@ -23,7 +23,7 @@ li {
 
 li, p, label, input {
     font-family: 'Lora', serif;
-    font-size: 15pt;
+    font-size: 13pt;
 }
 
 .flash {
