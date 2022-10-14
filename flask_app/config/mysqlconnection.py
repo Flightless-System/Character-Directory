@@ -22,7 +22,7 @@ autocommit = True)
                 if query.lower().find("insert") >= 0:
                     self.connection.commit()
                     return cursor.lastrowid
-                elif query.lower().find("select") >= 0:
+                elif query.lower().find("select") >= 0:f
                     result = cursor.fetchall()
                     return result
                 else:
